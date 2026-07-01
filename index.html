@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Memória - Minecraft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <h1>⛏️ Jogo da Memória</h1>
+    <p>Minere os pares certos antes que a noite chegue!</p>
+  </header>
+
+  
+  <section class="painel-info">
+    <div class="info-item">
+      <span class="info-label">Jogadas</span>
+      <span id="contador-jogadas" class="info-valor">0</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Itens encontrados</span>
+      <span id="contador-pares" class="info-valor">0 / 8</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Tempo</span>
+      <span id="contador-tempo" class="info-valor">00:00</span>
+    </div>
+  </section>
+
+
+  <p id="mensagem-jogada" class="mensagem-jogada">Bora minerar! 🎮</p>
+
+
+  <main id="tabuleiro" class="tabuleiro"></main>
+
+  <button id="btn-reiniciar" class="botao-reiniciar">🔄 Reiniciar Jogo</button>
+
+  
+  <div id="tela-vitoria" class="tela-vitoria escondido">
+    <div class="caixa-vitoria">
+      <h2>🎉 Parabéns, demorou mas ganhou!</h2>
+      <p id="resumo-vitoria"></p>
+      <button id="btn-jogar-novamente" class="botao-reiniciar">Minerar Novamente</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

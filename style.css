@@ -1,0 +1,297 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(180deg, #528eb9 0%, #7ec0ee 55%, #338c0a 55%, #3e7a2c 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+  color: #fff;
+  image-rendering: pixelated;
+}
+
+
+.cabecalho h1,
+.info-label,
+.info-valor,
+.mensagem-jogada,
+.botao-reiniciar,
+.caixa-vitoria h2 {
+  font-family: 'Press Start 2P', 'Segoe UI', monospace;
+}
+
+
+.cabecalho {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cabecalho h1 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  text-shadow: 3px 3px 0 #2b1b0f;
+  color: #6adb41;
+}
+
+.cabecalho p {
+  opacity: 0.9;
+}
+
+
+.painel-info {
+  display: flex;
+  gap: 25px;
+  background: #c6c6c6;
+  border-top: 4px solid #ffffff;
+  border-left: 4px solid #ffffff;
+  border-right: 4px solid #555555;
+  border-bottom: 4px solid #555555;
+  padding: 12px 25px;
+  border-radius: 0;
+  margin-bottom: 18px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-label {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #3b3b3b;
+  margin-bottom: 6px;
+}
+
+.info-valor {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+
+.mensagem-jogada {
+  min-height: 1.4em;
+  margin-bottom: 18px;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #ffd700;
+  text-shadow: 2px 2px 0 #2b1b0f;
+}
+
+.mensagem-jogada.anim {
+  animation: pulsarMensagem 0.4s ease;
+}
+
+@keyframes pulsarMensagem {
+  0%   { transform: scale(0.7); opacity: 0; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+
+.tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 25px;
+}
+
+
+.carta {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  perspective: 800px;
+  animation: entrarCarta 0.45s ease backwards;
+}
+
+@keyframes entrarCarta {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.7) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+.carta-interna {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+}
+
+
+.carta.virada .carta-interna {
+  transform: rotateY(180deg);
+}
+
+.carta-frente,
+.carta-verso {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  backface-visibility: hidden;
+  font-size: 1.8rem;
+}
+
+.carta-frente {
+  background: #8a8a8a;
+  border-top: 4px solid #c6c6c6;
+  border-left: 4px solid #c6c6c6;
+  border-right: 4px solid #4a4a4a;
+  border-bottom: 4px solid #4a4a4a;
+  color: #ffffff;
+  text-shadow: 2px 2px 0 #2b1b0f;
+}
+
+.carta-verso {
+  background: #c6c6c6;
+  border-top: 4px solid #ffffff;
+  border-left: 4px solid #ffffff;
+  border-right: 4px solid #555555;
+  border-bottom: 4px solid #555555;
+  transform: rotateY(180deg);
+  padding: 6px;
+}
+
+
+.imagem-carta {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+
+.carta.encontrada .carta-verso {
+  border-color: #ffd700;
+  box-shadow: 0 0 0 3px #2bbd4e inset;
+}
+
+
+.botao-reiniciar {
+  background: #5d9c3f;
+  color: #fff;
+  font-size: 0.7rem;
+  border-top: 4px solid #8fce5c;
+  border-left: 4px solid #8fce5c;
+  border-right: 4px solid #2f5c1f;
+  border-bottom: 4px solid #2f5c1f;
+  padding: 14px 26px;
+  border-radius: 0;
+  cursor: pointer;
+  text-shadow: 2px 2px 0 #1a2e0f;
+  transition: transform 0.1s, background 0.2s;
+}
+
+.botao-reiniciar:hover {
+  background: #71b34d;
+  transform: translateY(-2px);
+}
+
+.botao-reiniciar:active {
+  transform: translateY(1px);
+  border-top: 4px solid #2f5c1f;
+  border-left: 4px solid #2f5c1f;
+  border-right: 4px solid #8fce5c;
+  border-bottom: 4px solid #8fce5c;
+}
+
+
+.tela-vitoria {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 15, 30, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tela-vitoria.escondido {
+  display: none;
+}
+
+.caixa-vitoria {
+  background: #c6c6c6;
+  border-top: 4px solid #ffffff;
+  border-left: 4px solid #ffffff;
+  border-right: 4px solid #555555;
+  border-bottom: 4px solid #555555;
+  padding: 35px 40px;
+  border-radius: 0;
+  text-align: center;
+  max-width: 90%;
+  color: #1a1a1a;
+  animation: apareceVitoria 0.5s ease;
+}
+
+@keyframes apareceVitoria {
+  0%   { transform: scale(0.6) rotate(-5deg); opacity: 0; }
+  70%  { transform: scale(1.05) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.caixa-vitoria h2 {
+  margin-bottom: 16px;
+  font-size: 1rem;
+  color: #2f5c1f;
+}
+
+.caixa-vitoria p {
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+
+.confete {
+  position: fixed;
+  top: -40px;
+  font-size: 1.6rem;
+  pointer-events: none;
+  z-index: 999;
+  animation-name: cairConfete;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cairConfete {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+
+@media (max-width: 400px) {
+  .tabuleiro {
+    gap: 8px;
+  }
+  .carta-frente,
+  .carta-verso {
+    font-size: 1.6rem;
+  }
+}
