@@ -307,3 +307,6 @@ btnReiniciar.addEventListener("click", iniciarJogo);
 btnJogarNovamente.addEventListener("click", iniciarJogo);
 
 iniciarJogo();
+
+
+//teste
