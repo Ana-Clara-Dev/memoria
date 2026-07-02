@@ -17,7 +17,7 @@ let totalJogadas = 0;
 let paresEncontrados = 0;
 const totalPares = listaImagens.length;
 
-// ----- Variáveis do cronômetro -----
+// ----- Variáveis do cronômetro ------
 let segundosDecorridos = 0;
 let idIntervaloTempo = null;
 
@@ -297,7 +297,6 @@ function vencerJogo() {
   else if (segundosDecorridos >= 31 && segundosDecorridos <= 59 ) {
     mensagemDesenpenho.textContent = mensagensDeDesenpenho[1];
   }
-  
   else if (segundosDecorridos >= 60) {
     mensagemDesenpenho.textContent = mensagensDeDesenpenho[2];
   }
