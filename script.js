@@ -293,15 +293,13 @@ function vencerJogo() {
   pararTimer();
   if (segundosDecorridos >= 1 && segundosDecorridos <= 30) {
     mensagemDesenpenho.textContent = mensagensDeDesenpenho[0];
-  }
-  else if (segundosDecorridos >= 31 && segundosDecorridos <= 59 ) {
+  } else if (segundosDecorridos >= 31 && segundosDecorridos <= 59) {
     mensagemDesenpenho.textContent = mensagensDeDesenpenho[1];
-  }
-  else if (segundosDecorridos >= 60) {
+  } else if (segundosDecorridos >= 60) {
     mensagemDesenpenho.textContent = mensagensDeDesenpenho[2];
   }
-  
-    resumoVitoriaEl.textContent =
+
+  resumoVitoriaEl.textContent =
     "Você fez " +
     totalJogadas +
     " jogadas e levou " +
